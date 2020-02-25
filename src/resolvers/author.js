@@ -10,7 +10,7 @@ module.exports  = {
     },
 
    author: async (parent, { id }) => {
-      return await Author.findById(id);
+      return await Author.findByPk(id);
     },
  },
 
@@ -42,7 +42,7 @@ module.exports  = {
   Author: {
     books:
       async (author, args) => {
-            return await models.Book.findAll({
+            return await Book.findAll({
               where: {
                 authorId: author.id,
       },
