@@ -1,48 +1,47 @@
-const Book = require ('../models/Book');
+const Book = require('../models/Book')
 
-module.exports  = {
+module.exports = {
   Query: {
     books:
       async (parent, args) => {
-        return await Book.findAll();
-    },
+        return await Book.findAll()
+      },
 
-   book: async (parent, { id }) => {
-      return await Book.findByPk(id);
-    },
- },
-
- Mutation: {
-
-  addBook: async (
-    parent,
-    {authorId, name},
-  ) => {
-    const book = await Book.create({
-      authorId,
-      name,
-    });
-    return book.id;
+    book: async (parent, { id }) => {
+      return await Book.findByPk(id)
+    }
   },
 
-  deleteBook:
+  Mutation: {
+
+    addBook: async (
+      parent,
+      { authorId, name }
+    ) => {
+      const book = await Book.create({
+        authorId,
+        name
+      })
+      return book.id
+    },
+
+    deleteBook:
     async (parent, { id }) => {
       await Book.destroy({
-        where: { id },
-      });
-      return "OK";
-    },
-},
-
+        where: { id }
+      })
+      return 'OK'
+    }
+  },
 
   Author: {
     books:
       async (author, args) => {
-            return await Book.findAll({
-              where: {
-                authorId: author.id,
-      },
-    });
-  },
-},
-};
+        return await Book.findAll({
+          where: {
+            authorId: author.id
+          }
+        })
+      }
+  }
+}

@@ -1,4 +1,4 @@
-const  {gql} =  require ('apollo-server-express');
+const { gql } = require('apollo-server-express')
 const bookSchema = gql`
 
   extend type Query {
@@ -21,5 +21,5 @@ const bookSchema = gql`
     name: String!
     author: Author!
   }
-  `;
-module.exports = bookSchema;
+  `
+module.exports = bookSchema

@@ -1,6 +1,6 @@
-const bookResolvers = require  ('../resolvers/book');
-const authorResolvers = require ( '../resolvers/author');
+const bookResolvers = require('../resolvers/book')
+const authorResolvers = require('../resolvers/author')
 
-module.exports = [  bookResolvers,
-  authorResolvers,
-];
+module.exports = [bookResolvers,
+  authorResolvers
+]

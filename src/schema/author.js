@@ -1,6 +1,6 @@
-const  {gql} =  require ('apollo-server-express');
+const { gql } = require('apollo-server-express')
 
- const authorSchema = gql`
+const authorSchema = gql`
   type Query {
     authors: [Author!]
     author(id: ID!): Author
@@ -24,6 +24,6 @@ const  {gql} =  require ('apollo-server-express');
     lastName: String!
     books: [Book!]
   }
-`;
+`
 
-module.exports = authorSchema;
+module.exports = authorSchema

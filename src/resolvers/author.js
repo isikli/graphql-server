@@ -1,52 +1,50 @@
-const Author = require ('../models/Author');
-const Book = require ('../models/Book');
+const Author = require('../models/Author')
+const Book = require('../models/Book')
 
-
-module.exports  = {
+module.exports = {
   Query: {
     authors:
       async (parent, args) => {
-        return await Author.findAll();
-    },
+        return await Author.findAll()
+      },
 
-   author: async (parent, { id }) => {
-      return await Author.findByPk(id);
-    },
- },
-
- Mutation: {
-
-  createAuthor: async (
-    parent,
-    {firstName, lastName},
-  ) => {
-    console.log ("calling createAuthor");
-    const author = await Author.create({
-      firstName,
-      lastName,
-    });
-    console.log (author.id);
-    return  {id:author.id};
+    author: async (parent, { id }) => {
+      return await Author.findByPk(id)
+    }
   },
 
-  deleteAuthor:
+  Mutation: {
+
+    createAuthor: async (
+      parent,
+      { firstName, lastName }
+    ) => {
+      console.log('calling createAuthor')
+      const author = await Author.create({
+        firstName,
+        lastName
+      })
+      console.log(author.id)
+      return { id: author.id }
+    },
+
+    deleteAuthor:
     async (parent, { id }) => {
       await Author.destroy({
-        where: { id },
-      });
-      return true;
-    },
-},
-
+        where: { id }
+      })
+      return true
+    }
+  },
 
   Author: {
     books:
       async (author, args) => {
-            return await Book.findAll({
-              where: {
-                authorId: author.id,
-      },
-    });
-  },
-},
-};
+        return await Book.findAll({
+          where: {
+            authorId: author.id
+          }
+        })
+      }
+  }
+}
